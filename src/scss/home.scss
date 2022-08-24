@@ -1,1159 +1,990 @@
-
 .home {
-	@extend .no-anim;
-	transition: all 0.5s ease 0s;
-	&__wrapper {
-		position: relative;
-	}
-	&__inner {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		z-index: 5;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		text-align: center;
-		padding-top: 70px;
-		padding-bottom: 30px;
-	}
+    position: relative;
 
-	&__container {
-	}
-	&__text {
-		@include adaptiv-value("width", 850, 280, 1);
-		@include adaptiv-value("margin-bottom", 40, 30, 1);
-		@media (max-height: 400px) {
-			@include adaptiv-value("width", 300, 200, 1);
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0.5s;
-		img {
-			max-width: 100%;
-		}
-	}
-	&__button {
-		@extend .no-anim;
-		transition: all 0.8s ease 1s;
-	}
-	&__btn {
-		min-width: 140px;
-	}
+    // ANIMATION  ===========================================================================================================================================
+    @extend %no-anim;
+    transition: opacity 0.5s ease 0s, visibility 0.5s ease 0s;
+    // min-height: rem(350);
+    // @media (min-width: $mobile) and (max-height: $mobile) {
+    //     min-height: rem(700);
+    // }
 
-	&__bg {
-		position: relative;
-		overflow: hidden;
-	}
+    &__content {
+        position: relative;
+        z-index: 5;
+        padding-top: rem(140);
+        padding-bottom: rem(100);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        @media (max-width: $mobile) {
+            padding-top: rem(100);
+            padding-bottom: rem(70);
+        }
+    }
 
-	&__video {
-		min-height: 100vh;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			z-index: 2;
-			background: rgba(0, 0, 0, 0.5);
-		}
-	}
+    &__container {
+    }
 
-	&__image {
-		min-height: 100vh;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			z-index: 2;
-			background: rgba(0, 0, 0, 0.5);
-		}
-	}
+    &__text {
+        @include adaptiveValue("width", 850, 280);
+        @include adaptiveValue("margin-bottom", 40, 30);
+        img {
+            max-width: 100%;
+        }
+        @media (max-height: rem(550)) {
+            width: 140;
+        }
 
-	&__image-bottom {
-		position: absolute;
-		width: 100%;
-		bottom: 0;
-		left: 0;
-		transform: translate(0, 50%);
-		z-index: 4;
-		img {
-			@media (min-width: 1100px) {
-				min-width: 100%;
-			}
-			max-width: 100%;
-		}
-		@media (max-width: $md4+px) {
-			transform: translate(-10%, 50%);
-			min-width: 500px;
-		}
-	}
+        // ANIMATION  ===========================================================================================================================================
+        @extend %no-anim;
+        transition: opacity 0.8s ease 0.5s, visibility 0.8s ease 0.5s;
+    }
+    &__btn {
+        min-width: rem(140);
+
+        // ANIMATION  ===========================================================================================================================================
+        @extend %no-anim;
+        transition: opacity 0.8s ease 1s, visibility 0.8s ease 1s, background-color 0.3s ease 0s, color 0.3s ease 0s;
+    }
+
+    &__video {
+        @extend %responsiveVideo;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    &__image {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        transform: translate(0, 50%);
+        z-index: 4;
+        @extend %no-anim;
+        transition: opacity 0.8s ease 0s, visibility 0.8s ease 0s;
+        img {
+            max-width: 100%;
+            @media (min-width: em(1100)) {
+                min-width: 100%;
+            }
+        }
+        @media (max-width: $mobileSmall) {
+            min-width: rem(500);
+        }
+    }
 }
 
 //========================================================================================================================================================
 
 .info {
-	&__wrapper {
-		position: relative;
-	}
+    position: relative;
+    &__container {
+        position: relative;
+        z-index: 5;
+        max-width: rem(1020);
+        margin-top: rem(-60);
+        @media (max-width: $mobile) {
+            margin-top: rem(0);
+            padding-top: rem(40);
+        }
+        // @media (max-width: $mobile), (max-height: $mobile) {
+        //     padding-top: rem(40);
+        //     margin-top: rem(0);
+        // }
+    }
 
-	&__content {
-		position: relative;
-		z-index: 5;
-	}
-
-	&__container {
-	}
-
-	&__body {
-		@media (min-width: $md2+px) {
-			@include adaptiv-value("padding-left", 120, 0, 1);
-			@include adaptiv-value("padding-right", 120, 0, 1);
-		}
-		padding: 0px 20px;
-		margin-top: -60px;
-		@media (max-width: $md3+px), (max-height: $md3+px) {
-			margin-top: -20px;
-			padding: 0;
-		}
-		@media (max-width: 560px), (max-height: $md4+px) {
-			margin-top: 40px;
-		}
-	}
-
-	&__bg {
-		margin-top: 60px;
-		position: absolute;
-		width: 100%;
-		height: calc(100% - 60px);
-		top: 0;
-		left: 0;
-		@media (max-width: $md3+px) {
-			margin-top: 20px;
-			height: calc(100% - 20px);
-		}
-		@media (max-width: 560px) {
-			height: 100%;
-			margin-top: 0;
-		}
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: linear-gradient(
-				180deg,
-				rgba(0, 0, 0, 0.866013) 0%,
-				rgba(0, 0, 0, 0.0001) 36.55%,
-				rgba(0, 0, 0, 1) 100%
-			);
-		}
-	}
+    &__bg-ibg {
+        margin-top: rem(60);
+        position: absolute;
+        width: 100%;
+        height: calc(100% - rem(60));
+        top: 0;
+        left: 0;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.866013) 0%, rgba(0, 0, 0, 0.0001) 36.55%, rgba(0, 0, 0, 1) 100%);
+        }
+        @media (max-width: $mobile) {
+            margin-top: 0;
+            height: 100%;
+        }
+    }
 }
 
 .info-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 40px;
-	grid-template-areas:
-		"grid1"
-		"grid2";
-	@media (max-width: $md2+px) {
-		gap: 30px;
-	}
-	@media (max-width: $md3+px) {
-		gap: 20px;
-	}
-	&__row {
-		display: grid;
-		padding-right: 40px;
-		@media (max-width: $md2+px) {
-			gap: 30px;
-			padding-right: 30px;
-		}
-		@media (max-width: $md2+px) {
-			gap: 20px;
-			padding-right: 20px;
-		}
+    display: grid;
+    grid-template-columns: 1fr;
+    @include adaptiveValue("gap", 40, 15, 1220, 767.98, 1);
+    &__row {
+        display: grid;
+        @include adaptiveValue("gap", 40, 15, 1220, 767.98, 1);
+        @media (min-width: em(560)) {
+            @include adaptiveValue("min-height", 400, 250);
+        }
+        &_1 {
+            @media (min-width: em(560)) {
+                grid-template-columns: 1.08fr 0.92fr;
+                grid-template-areas:
+                    "g1 g2"
+                    "g1 g3";
+            }
+            @media (max-width: em(560)) {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "g1"
+                    "g2"
+                    "g3";
+            }
+        }
+        &_2 {
+            @media (min-width: em(560)) {
+                grid-template-columns: 0.92fr 1.08fr;
+                grid-template-areas: "g4 g5";
+            }
+            @media (max-width: em(560)) {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "g4"
+                    "g5";
+            }
+        }
+    }
 
-		@media (max-width: 560px) {
-			padding-right: 0;
-		}
-		@media (min-width: 560px) {
-			grid-template-rows: 1fr 1fr;
-			gap: 40px;
-			@include adaptiv-value("min-height", 400, 250, 1);
-		}
-		@media (max-width: $md4+px) {
-			margin: 0px -15px;
-		}
-		&._animate {
-			.info-grid__item {
-				@extend .anim;
-				transform: translate(0px, 0px);
-				.info-grid__content {
-					@extend .anim;
-				}
-			}
-		}
-		&_1 {
-			grid-area: grid1;
-			@media (min-width: 560px) {
-				grid-template-columns: 52% 48%;
-				grid-template-rows: 1fr 1fr;
-				grid-template-areas:
-					"sub1 sub2"
-					"sub1 sub3";
-			}
-			@media (max-width: 560px) {
-				grid-template-columns: 1fr;
-				grid-template-rows: 1fr 1fr 1fr;
-				grid-template-areas:
-					"sub1"
-					"sub2"
-					"sub3";
-			}
-		}
-		&_2 {
-			grid-area: grid2;
-			@media (min-width: 560px) {
-				grid-template-columns: 48% 52%;
-				grid-template-rows: 1fr;
-				grid-template-areas: "sub4 sub5";
-			}
-			@media (max-width: 560px) {
-				grid-template-columns: 1fr;
-				grid-template-areas:
-					"sub4"
-					"sub5";
-			}
-		}
-	}
-	&__item {
-		@media (max-width: 560px) {
-			@include adaptiv-value("min-height", 300, 200, 1);
-		}
-		position: relative;
-		filter: drop-shadow(0px 2px 27px rgba(0, 0, 0, 0.8));
-		@media (any-hover: hover) {
-			&:hover {
-				.info-grid__image {
-					img {
-						transform: scale(1.1);
-					}
-				}
-			}
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		&_1 {
-			@media (min-width: 560px) {
-				transform: translate(-30%, 0px);
-			}
-			grid-area: sub1;
-			.info-grid__content {
-				@include adaptiv-value("bottom", 50, 20, 1);
-				@media (max-width: $md3+px) {
-					bottom: 20px;
-				}
-			}
-		}
-		&_2 {
-			@media (min-width: 560px) {
-				transform: translate(30%, 0px);
-			}
-			grid-area: sub2;
-			.info-grid__content {
-				@include adaptiv-value("bottom", 30, 20, 1);
-				@media (max-width: $md3+px) {
-					bottom: 20px;
-				}
-			}
-			.info-grid__title {
-				@media (min-width: 560px) {
-					margin-top: 5px;
-					@include adaptiv-font(28, 15, 1);
-					line-height: 31 / 28 * 100%;
-					letter-spacing: 1.55556px;
-				}
-			}
-		}
-		&_3 {
-			@media (min-width: 560px) {
-				transform: translate(30%, 0px);
-			}
-			grid-area: sub3;
-			.info-grid__content {
-				bottom: 20px;
-				@media (max-width: $md3+px) {
-					right: 20px;
-				}
-				@media (min-width: 560px) {
-					text-align: right;
-					right: -20px;
-					left: auto;
-				}
-			}
-			.info-grid__title {
-				@media (min-width: 560px) {
-					margin-top: 5px;
-					@include adaptiv-font(28, 15, 1);
-					line-height: 31 / 28 * 100%;
-					letter-spacing: 1.55556px;
-				}
-			}
-		}
-		&_4 {
-			@media (min-width: 560px) {
-				transform: translate(-30%, 0px);
-			}
-			grid-area: sub4;
-			.info-grid__content {
-				@include adaptiv-value("bottom", 140, 20, 1);
-				@media (max-width: $md3+px) {
-					bottom: 20px;
-				}
-			}
-		}
-		&_5 {
-			@media (min-width: 560px) {
-				transform: translate(30%, 0px);
-			}
-			grid-area: sub5;
-			.info-grid__content {
-				bottom: 20px;
-				@media (min-width: 560px) {
-					left: 50%;
-					transform: translate(-50%, 0px);
-					text-align: center;
-				}
-			}
-		}
-	}
+    &__item {
+        position: relative;
+        box-shadow: 0px rem(2) rem(27) rgba(0, 0, 0, 0.8);
+        @media (any-hover: hover) {
+            &:hover {
+                .info-grid__image-ibg {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        @media (max-width: em(560)) {
+            @include adaptiveValue("min-height", 300, 200);
+            @include inViewBasic(0, 0, 0.8, 0, true);
+        }
+        // ANIMATION ==================================================================================================================================================
+        &_1 {
+            grid-area: g1;
+            @media (min-width: em(560)) {
+                @include inViewBasic(-30%, 0, 0.8, 0, true);
+            }
+        }
+        &_2 {
+            grid-area: g2;
+            @media (min-width: em(560)) {
+                @include inViewBasic(30%, 0, 0.8, 0, true);
+            }
+        }
+        &_3 {
+            grid-area: g3;
+            @media (min-width: em(560)) {
+                @include inViewBasic(30%, 0, 0.8, 0, true);
+            }
+        }
+        &_4 {
+            grid-area: g4;
+            @media (min-width: em(560)) {
+                @include inViewBasic(-30%, 0, 0.8, 0, true);
+            }
+        }
+        &_5 {
+            grid-area: g5;
+            @media (min-width: em(560)) {
+                @include inViewBasic(30%, 0, 0.8, 0, true);
+            }
+        }
+    }
 
-	&__content {
-		position: absolute;
-		bottom: 0;
-		left: -20px;
-		z-index: 6;
-		@include adaptiv-value("width", 360, 250, 1);
-		@media (max-width: $md3+px) {
-			left: 15px;
-			width: calc(100% - 30px);
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0.5s;
-	}
+    &__content {
+        position: absolute;
+        z-index: 6;
+        bottom: 0;
+        left: rem(-20);
+        @include adaptiveValue("width", 360, 250);
+        .info-grid__item_1 & {
+            @include adaptiveValue("bottom", 50, 20, 1220, 767.98, 1);
+        }
+        .info-grid__item_2 & {
+            @include adaptiveValue("bottom", 30, 20, 1220, 767.98, 1);
+        }
+        .info-grid__item_3 & {
+            bottom: rem(20);
+            @media (max-width: $pc) {
+                right: rem(15) !important;
+            }
+            @media (min-width: em(560)) {
+                text-align: right;
+                right: rem(-20);
+                left: auto;
+            }
+        }
+        .info-grid__item_4 & {
+            @include adaptiveValue("bottom", 140, 20, 1220, 767.98, 1);
+        }
+        .info-grid__item_5 & {
+            bottom: rem(20);
+            @media (min-width: em(560)) {
+                left: rem(0);
+                width: 100%;
+                text-align: center;
+            }
+        }
+        @media (max-width: $pc) {
+            left: rem(15);
+            width: calc(100% - rem(30));
+        }
 
-	&__subtitle {
-		font-weight: 600;
-		font-size: 14px;
-		line-height: 18 / 14 * 100%;
-		letter-spacing: 2px;
-		color: $gold;
-	}
+        @include inViewBasic(0, 0, 0.8, 0.5, true);
+    }
 
-	&__title {
-		font-family: "Eurostile";
-		font-weight: 700;
-		@include adaptiv-font(36, 18, 1);
-		line-height: 48 / 36 * 100%;
-		letter-spacing: 2px;
-		color: $white;
-		transition: all 0.3s ease 0s;
-		@media (any-hover: hover) {
-			&:hover {
-				color: $gold;
-			}
-		}
-	}
+    &__subtitle {
+        font-weight: 600;
+        font-size: rem(14);
+        line-height: math.div(18, 14);
+        letter-spacing: rem(2);
+        color: $gold;
+    }
 
-	&__image {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		overflow: hidden;
-		img {
-			transition: all 0.5s ease 0s;
-		}
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background-color: $black;
-			opacity: 0.5;
-		}
-	}
+    &__title {
+        font-family: "Eurostile";
+        font-weight: 700;
+        @include adaptiveValue("font-size", 36, 18, 1220, 479.98, 1);
+        line-height: math.div(48, 36);
+        letter-spacing: rem(2);
+        transition: color 0.3s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                color: $gold;
+            }
+        }
+        @media (min-width: em(560)) {
+            .info-grid__item_2 &,
+            .info-grid__item_3 & {
+                margin-top: rem(5);
+                @include adaptiveValue("font-size", 28, 15, 1220, 767.98, 1);
+                line-height: math.div(31, 28);
+                letter-spacing: em(1.55);
+            }
+        }
+    }
+
+    &__image-ibg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        img {
+            transition: transform 0.5s ease 0s;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $black;
+            opacity: 0.5;
+        }
+    }
 }
 
 //========================================================================================================================================================
 
 .char {
-	&__top {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: flex-end;
-		@media (max-width: $md2+px) {
-			margin: 0px 0px 25px 0px;
-		}
-		@media (max-width: $md3+px) {
-			justify-content: space-between;
-		}
-	}
+    &__container {
+    }
 
-	&__text {
-		flex: 1 1 100%;
-		margin-bottom: 25px;
-		img {
-			max-width: 100%;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		&._animate {
-			@extend .anim;
-		}
-	}
+    &__top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        @media (max-width: $tablet) {
+            margin-bottom: rem(25);
+        }
+        @media (max-width: $mobile) {
+            justify-content: space-between;
+        }
+    }
 
-	&__subslider {
-		position: relative;
-		z-index: 5;
-		@media (min-width: $md1+px) {
-			margin-right: 85px;
-		}
-		flex: 0 1 605px;
-		@media (max-width: $md3+px) {
-			flex: 1 1 100%;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		@media (min-width: $md3+px) {
-			transform: translate(50%, 0px);
-		}
-		&._animate {
-			@media (min-width: $md3+px) {
-				transform: translate(0px, 0px);
-			}
-			@extend .anim;
-		}
-	}
+    &__text {
+        flex: 1 1 100%;
+        margin-bottom: rem(25);
+        img {
+            max-width: 100%;
+        }
 
-	&__bottom {
-		position: relative;
-		z-index: 2;
-	}
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0);
+    }
 
-	&__slider {
-	}
+    &__subslider {
+        position: relative;
+        z-index: 5;
+        flex: 0 1 rem(605);
+        @media (max-width: $mobile) {
+            flex: 1 1 100%;
+        }
+
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(50%, 0, 0.8, 0);
+        @media (max-width: $mobile) {
+            @include inViewBasic(0, 0, 0.8, 0);
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        z-index: 2;
+    }
 }
-.subslider-char {
-	display: none;
-	min-width: 0;
-	justify-content: space-between;
-	@media (max-width: $md4+px) {
-		flex-wrap: wrap;
-		justify-content: flex-end;
-	}
-	&__slick {
-		min-width: 0;
-		flex: 1 1 auto;
-		@media (min-width: $md4+px) {
-			margin-right: 15px;
-		}
-		.slick-track {
-			transform: translate3d(0px, 0px, 0px) !important;
-			display: flex;
-			@media (max-width: $md4+px) {
-				width: 100% !important;
-			}
-		}
-		@media (max-width: $md4+px) {
-			flex: 1 1 100%;
-			margin-bottom: 15px;
-		}
-	}
 
-	&__slide {
-		cursor: pointer;
-		flex: 0 0 75px;
-		&:not(:last-child) {
-			margin-right: 15px;
-		}
-		@media (max-width: $md3+px) {
-			&:not(:last-child) {
-				margin-right: 10px;
-			}
-		}
-		@media (max-width: $md4+px) {
-			&:not(:last-child) {
-				margin-right: 15px;
-			}
-		}
-		&.slick-current {
-			.subslider-char__text {
-				color: $gold;
-			}
-			@media (max-width: 500px) {
-				.subslider-char__image {
-					&::after {
-						opacity: 0;
-					}
-				}
-			}
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				.subslider-char__text {
-					color: $gold;
-				}
-			}
-		}
-		@media (max-width: $md3+px) {
-			flex: 0 1 100px;
-		}
-		@media (max-width: $md4+px) {
-			flex: 0 1 20%;
-		}
-	}
+.sub-slider {
+    display: flex;
+    gap: rem(15);
+    min-width: 0;
+    justify-content: space-between;
+    @media (max-width: em(500)) {
+        gap: rem(10);
+    }
+    @media (max-width: $mobileSmall) {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    &__swiper {
+        min-width: 0;
+        flex: 1 1 auto;
+        @media (max-width: $mobileSmall) {
+            flex: 1 1 100%;
+        }
+    }
 
-	&__inner {
-		position: relative;
-		height: 45px;
-		box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.5);
-		@media (max-width: $md3+px) {
-			width: auto;
-		}
-	}
+    &__wrapper {
+        gap: rem(15);
+        transform: translate3d(0px, 0px, 0px) !important;
+        @media (max-width: em(500)) {
+            gap: rem(10);
+        }
+    }
 
-	&__image {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background-color: $black;
-			transition: all 0.8s ease 0s;
-			opacity: 0.5;
-		}
-	}
+    &__slide {
+        cursor: pointer;
+        position: relative;
+        flex: 0 0 rem(75);
+        height: rem(45);
+        box-shadow: 0px rem(2) rem(22) rgba(0, 0, 0, 0.5);
+        &.swiper-slide-active {
+            .sub-slider__text {
+                color: $gold;
+            }
+            .sub-slider__image-ibg {
+                &::after {
+                    opacity: 0;
+                }
+            }
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                .subslider-char__text {
+                    color: $gold;
+                }
+            }
+        }
+        @media (max-width: $mobile) {
+            flex: 0 1 20% !important;
+        }
+    }
 
-	&__text {
-		position: absolute;
-		bottom: 2px;
-		left: 5px;
-		font-weight: 700;
-		font-size: 11px;
-		line-height: 14 / 11 * 100%;
-		color: $white;
-		transition: all 0.3s ease 0s;
+    &__image-ibg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $black;
+            transition: opacity 0.8s ease 0s;
+            opacity: 0.5;
+        }
+    }
 
-		@media (max-width: 500px) {
-			display: none;
-		}
-	}
+    &__text {
+        position: absolute;
+        bottom: rem(2);
+        left: rem(5);
+        font-weight: 700;
+        font-size: rem(11);
+        line-height: math.div(14, 11);
+        transition: color 0.3s ease 0s;
+        @media (max-width: em(500)) {
+            display: none;
+        }
+    }
 
-	&__more {
-		flex: 0 0 155px;
-		height: 45px;
-		@media (any-hover: hover) {
-			&:hover {
-				path {
-					fill: $red;
-				}
-			}
-		}
-		span {
-			margin-top: 2px;
-			margin-left: 12px;
-			path {
-				transition: all 0.3s ease 0s;
-				fill: $white;
-			}
-		}
-	}
+    &__more {
+        flex: 0 0 rem(155);
+        height: rem(45);
+        @media (any-hover: hover) {
+            &:hover {
+                path {
+                    fill: $red;
+                }
+            }
+        }
+        span {
+            margin-top: rem(2);
+            margin-left: rem(12);
+            path {
+                transition: fill 0.3s ease 0s;
+                fill: $white;
+            }
+        }
+    }
 }
-.slider-char {
-	display: none;
-	&__slick {
-		&._animate {
-			.slider-char__image,
-			.slider-char__text,
-			.slider-char__name,
-			.slider-char__weapons {
-				transform: translate(0px, 0px);
-				@extend .anim;
-			}
-		}
-	}
 
-	&__slide {
-		cursor: grab;
-	}
+.bottom-slider {
+    &__slide {
+        cursor: grab;
+        margin-top: rem(-220);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        &.swiper-slide-active {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        @media (min-width: em(1600)) {
+            margin-top: rem(-130);
+        }
+        @media (max-width: $tablet) {
+            margin-top: 0;
+        }
+    }
 
-	&__body {
-		margin-top: -220px;
-		display: flex;
-		justify-content: space-between;
-		min-height: 100%;
-		@media (max-width: 1600px) {
-			margin-top: -130px;
-		}
-		@media (max-width: $md2+px) {
-			margin-top: 0;
-		}
-	}
+    &__image {
+        position: relative;
+        z-index: 6;
+        flex: 0 0 rem(737);
+        img {
+            @include adaptiveValue("width", 737, 200);
+            max-width: 100%;
+            @media (max-width: em(1600)) {
+                @include adaptiveValue("width", 600, 200);
+            }
+        }
+        @media (max-width: $pc) {
+            flex: 0 0 60%;
+        }
+        @media (min-width: $tablet) {
+            margin-left: rem(-120);
+        }
+        @media (max-width: $mobileSmall) {
+            flex: 0 1 50%;
+        }
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(-50%, 0, 0.5, 0, true);
+    }
 
-	&__image {
-		position: relative;
-		z-index: 6;
-		flex: 0 0 737px;
-		@media (max-width: 1600px) {
-			flex: 0 0 600px;
-		}
-		@media (max-width: $md1+px) {
-			flex: 0 1 60%;
-		}
-		@media (min-width: $md2+px) {
-			margin-left: -120px;
-		}
-		@media (max-width: $md4+px) {
-			flex: 0 1 50%;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		transform: translate(-50%, 0px);
-		img {
-			@media (max-width: 1600px) {
-				@include adaptiv-value("width", 600, 200, 1);
-			}
-			@include adaptiv-value("width", 737, 200, 1);
-			max-width: 100%;
-		}
-	}
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        margin-left: rem(-120);
+        flex: 1 1 auto;
+        margin-top: rem(250);
+        @media (max-width: $tablet) {
+            flex: 0 1 40%;
+            margin-top: rem(100);
+            margin-left: 0;
+        }
+        @media (max-width: $mobile) {
+            @include adaptiveValue("margin-top", 60, 20);
+        }
+        @media (max-width: $mobileSmall) {
+            flex: 0 1 50%;
+        }
+    }
 
-	&__info {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		text-align: right;
-		margin-left: -120px;
-		flex: 1 1 auto;
-		margin-top: 300px;
-		@media (max-width: 1600px) {
-			margin-top: 200px;
-		}
-		@media (max-width: $md2+px) {
-			flex: 0 1 40%;
-			margin-top: 100px;
-			margin-left: 0;
-		}
-		@media (max-width: $md3+px) {
-			@include adaptiv-value("margin-top", 60, 20, 1);
-		}
-		@media (max-width: $md4+px) {
-			flex: 0 1 50%;
-		}
-	}
+    &__name {
+        font-family: "Arial";
+        font-weight: 900;
+        color: $white;
+        text-shadow: 0px rem(-6) rem(26) $black;
+        @include adaptiveValue("margin-bottom", 20, 10);
+        @media (min-width: em(1400)) {
+            font-size: rem(200);
+        }
+        @media (max-width: em(1400)) {
+            font-size: rem(170);
+        }
+        @media (min-width: $pc) {
+            margin-right: rem(15);
+        }
+        @media (max-width: $tablet) {
+            @include adaptiveValue("font-size", 100, 30, 991.98, 320, 1);
+        }
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(50%, 0, 0.8, 0.5, true);
+    }
 
-	&__name {
-		font-family: "Arial";
-		font-weight: 900;
-		color: $white;
-		text-shadow: 0px -6px 26px $black;
-		@include adaptiv-value("margin-bottom", 20, 10, 1);
-		@media (min-width: 1400px) {
-			@include adaptiv-font(200, 30, 1);
-		}
-		@media (max-width: 1400px) {
-			@include adaptiv-font(180, 30, 1);
-		}
-		@media (max-width: $md2+px) {
-			@include adaptiv-font(100, 30, 1);
-		}
-		@media (min-width: $md1+px) {
-			margin-right: 15px;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0.5s;
-		transform: translate(50%, 0px);
-	}
+    &__text {
+        font-family: "Arial";
+        font-weight: 700;
+        @include adaptiveValue("font-size", 36, 16);
+        line-height: math.div(45, 30);
+        color: $gold;
+        text-shadow: 0px rem(-6) rem(26) $black;
+        @media (min-width: $pc) {
+            margin-right: rem(85);
+        }
+        @media (max-width: $mobile) {
+            @include adaptiveValue("margin-left", -80, -20);
+        }
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(50%, 0, 0.8, 1, true);
+    }
 
-	&__text {
-		font-family: "Arial";
-		font-weight: 700;
-		@include adaptiv-font(30, 16, 1);
-		line-height: 45 / 30 * 100%;
-		color: $gold;
-		text-shadow: 0px -6px 26px $black;
-		@media (min-width: $md1+px) {
-			margin-right: 85px;
-		}
-		@media (max-width: $md3+px) {
-			@include adaptiv-value("margin-left", -80, -20, 0);
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 1s;
-		transform: translate(50%, 0px);
-	}
-
-	&__weapons {
-		@include adaptiv-value("width", 414, 130, 1);
-		@media (min-width: $md1+px) {
-			margin-right: 70px;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 1.5s;
-		transform: translate(50%, 0px);
-		img {
-			max-width: 100%;
-		}
-	}
+    &__weapons {
+        @include adaptiveValue("width", 414, 130);
+        img {
+            max-width: 100%;
+        }
+        @media (min-width: $pc) {
+            margin-right: rem(70);
+        }
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(50%, 0, 0.8, 1.5, true);
+    }
 }
 
 //========================================================================================================================================================
 
 .connected {
-	&__top {
-		position: relative;
-		z-index: 5;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 30px;
-		@media (min-width: $md1+px) {
-			padding: 0px 30px;
-		}
-		@media (max-width: $md3+px) {
-			flex-wrap: wrap;
-			margin: 0px 0px 20px 0px;
-		}
-		&._animate {
-			.connected__social,
-			.connected__filter-menu,
-			.connected__more {
-				transform: translate(0px, 0px);
-				@extend .anim;
-			}
-			.connected__bg {
-				transform: translate(-50%, 0px);
-				@extend .anim;
-			}
-		}
-	}
+    &__container {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: rem(30);
+        @media (max-width: $mobile) {
+            flex-wrap: wrap;
+        }
+    }
 
-	&__social {
-		@media (min-width: $md2+px) {
-			flex: 0 0 260px;
-		}
-		margin-right: 20px;
-		@media (max-width: $md2+px) {
-			margin-right: 40px;
-		}
-		@media (max-width: $md3+px) {
-			margin-right: 0px;
-		}
-		flex: 0 0 155px;
-		display: flex;
-		align-items: center;
-		@extend .no-anim;
-		transform: translate(-50%, 0px);
-		transition: all 0.8s ease 0.8s;
-	}
+    &__social {
+        margin-right: rem(20);
+        @media (min-width: $tablet) {
+            flex: 0 0 rem(260);
+        }
+        @media (max-width: $tablet) {
+            margin-right: rem(40);
+        }
+        @media (max-width: $mobile) {
+            margin-right: 0px;
+        }
+        flex: 0 0 rem(155);
+        display: flex;
+        align-items: center;
+        gap: rem(10);
 
-	&__social-item {
-		flex: 0 0 45px;
-		height: 45px;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		box-shadow: -6px 6px 10px rgba(0, 0, 0, 0.5);
-		&:not(:last-child) {
-			margin-right: 10px;
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				img {
-					transform: scale(1.1);
-				}
-			}
-		}
-		img {
-			transition: all 0.3s ease 0s;
-			max-width: 100%;
-		}
-		&_fb {
-			background-color: #385892;
-		}
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(-50%, 0, 0.8, 0.8, true);
+    }
 
-		&_tw {
-			background-color: #139cea;
-		}
+    &__social-item {
+        flex: 0 0 rem(45);
+        height: rem(45);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rem(-6) rem(6) rem(10) rgba(0, 0, 0, 0.5);
+        img {
+            transition: transform 0.3s ease 0s;
+            max-width: 100%;
+        }
+        &_fb {
+            background-color: #385892;
+        }
 
-		&_inst {
-			background-color: #de2b69;
-		}
-	}
+        &_tw {
+            background-color: #139cea;
+        }
 
-	&__filter-menu {
-		flex: 1 1 auto;
-		@media (max-width: $md3+px) {
-			flex: 1 1 100%;
-			order: 3;
-			margin: 20px 0px 0px 0px;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0.5s;
-	}
+        &_inst {
+            background-color: #de2b69;
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
 
-	&__filter-list {
-		align-items: center;
-		display: flex;
-		justify-content: center;
-		@media (max-width: $md4+px) {
-			justify-content: space-between;
-		}
-	}
+    &__filter-menu {
+        flex: 1 1 auto;
+        @media (max-width: $mobile) {
+            flex: 1 1 100%;
+            order: 3;
+            margin-top: rem(20);
+        }
 
-	&__filter-item {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		justify-content: center;
-		height: 45px;
-		@extend .text;
-		color: rgba(255, 255, 255, 0.466);
-		transition: all 0.3s ease 0s;
-		cursor: pointer;
-		&:not(:last-child) {
-			@include adaptiv-value("margin-right", 45, 10, 1);
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				color: $white;
-			}
-		}
-		&._active {
-			background-color: $red;
-			padding: 0px 20px;
-			color: $white;
-		}
-	}
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0.5, true);
+    }
 
-	&__more {
-		@media (min-width: $md2+px) {
-			flex: 0 0 260px;
-		}
-		margin-left: 20px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		@media (max-width: $md4+px) {
-			flex: 1 1 auto;
-			margin-left: 10px;
-		}
-		@extend .no-anim;
-		transform: translate(50%, 0px);
-		transition: all 0.8s ease 0.8s;
-	}
+    &__filter-list {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        @include adaptiveValue("gap", 45, 10);
+        @media (max-width: $mobileSmall) {
+            justify-content: space-between;
+        }
+    }
 
-	&__more-news {
-		@include adaptiv-value("margin-right", 45, 10, 1);
-		@extend .text;
-		color: rgba(255, 255, 255, 0.466);
-		@media (max-width: $md4+px) {
-			display: none;
-		}
-	}
+    &__filter-item {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        height: rem(45);
+        @extend %text;
+        color: rgba(255, 255, 255, 0.466);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        @media (any-hover: hover) {
+            &:hover {
+                color: $white;
+            }
+        }
+        &._active {
+            background-color: $red;
+            padding: 0px rem(20);
+            color: $white;
+        }
+    }
 
-	&__btn {
-		min-width: 140px;
-		@media (max-width: $md2+px) {
-			min-width: 100px;
-		}
-		@media (max-width: $md4+px) {
-			width: 100%;
-		}
-	}
+    &__more {
+        @media (min-width: $tablet) {
+            flex: 0 0 rem(260);
+        }
+        margin-left: rem(20);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: $mobileSmall) {
+            flex: 1 1 auto;
+            margin-left: rem(10);
+        }
 
-	&__bg {
-		position: absolute;
-		min-width: 810px;
-		@include adaptiv-value("min-width", 810, 400, 1);
-		@include adaptiv-value("top", -60, -40, 1);
-		left: 50%;
-		transform: translate(-50%, 0px);
-		z-index: -1;
-		@media (max-width: $md4+px) {
-			min-width: 280px;
-			top: -55px;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		img {
-			max-width: 100%;
-		}
-	}
-	&__bg-image {
-		position: absolute;
-		width: 100%;
-		@include adaptiv-value("top", -500, -170, 1);
-		left: 0;
-		z-index: 3;
-		img {
-			min-height: 250px;
-			max-width: 100%;
-		}
-	}
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(50%, 0, 0.8, 0.8, true);
+    }
 
-	&__body {
-		position: relative;
-	}
+    &__more-news {
+        @include adaptiveValue("margin-right", 45, 10);
+        @extend %text;
+        color: rgba(255, 255, 255, 0.466);
+        @media (max-width: $mobileSmall) {
+            display: none;
+        }
+    }
 
-	&__slick {
-		display: none;
-		position: relative;
-		z-index: 5;
-		&._animate {
-			.connected__image,
-			.connected__info {
-				@extend .anim;
-			}
-		}
-	}
+    &__btn {
+        min-width: rem(140);
+        @media (max-width: $tablet) {
+            min-width: rem(100);
+        }
+        @media (max-width: $mobileSmall) {
+            width: 100%;
+        }
+    }
 
-	&__slide {
-	}
+    &__bg {
+        position: absolute;
+        min-width: rem(810);
+        @include adaptiveValue("min-width", 810, 400);
+        @include adaptiveValue("top", -60, -40);
+        left: 50%;
+        transform: translate(-50%, 0px);
+        z-index: -1;
+        img {
+            max-width: 100%;
+        }
+        @media (max-width: $mobileSmall) {
+            min-width: rem(280);
+            top: rem(-55);
+        }
 
-	&__inner {
-		display: block;
-		position: relative;
-		overflow: hidden;
-		@media (any-hover: hover) {
-			&:hover {
-				.connected__image {
-					img {
-						transform: scale(1.1);
-					}
-				}
-			}
-		}
-	}
+        // ANIMATION ==================================================================================================================================================
+        @extend %no-anim;
+        transition: opacity 0.8s ease 0s, visibility 0.8s ease 0s;
+        ._watcher-view & {
+            transform: translate(-50%, 0px);
+            @extend %anim;
+        }
+    }
+    &__bg-image {
+        position: absolute;
+        width: 100%;
+        @include adaptiveValue("top", -500, -170);
+        left: 0;
+        z-index: 3;
+        @media (max-width: em(1600)) {
+            top: auto;
+            bottom: 0;
+        }
+        img {
+            min-height: rem(250);
+            max-width: 100%;
+        }
+    }
 
-	&__image {
-		@include adaptiv-value("min-height", 385, 250, 1);
-		position: relative;
-		img {
-			transition: all 0.5s ease 0s;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.80619) 100%),
-				linear-gradient(0deg, rgba(0, 0, 0, 0.38803), rgba(0, 0, 0, 0.38803));
-		}
-	}
+    &__body {
+        position: relative;
+    }
 
-	&__info {
-		position: absolute;
-		bottom: 0px;
-		left: 0px;
-		width: 100%;
-		padding: 20px 10px;
-		filter: drop-shadow(0px 2px 33px #000000);
-		@extend .no-anim;
-		transition: all 0.8s ease 0.8s;
-	}
+    &__slider {
+        @include adaptiveValue("min-height", 385, 250);
+        position: relative;
+        z-index: 5;
+    }
 
-	&__subtitle {
-		font-weight: 700;
-		font-size: 13px;
-		line-height: 17 / 13 * 100%;
-		letter-spacing: 1.85714px;
-		color: $gold;
-	}
+    &__wrapper {
+    }
 
-	&__title {
-		flex: 1 1 auto;
-		font-family: "Eurostile";
-		font-weight: 700;
-		@include adaptiv-font(30, 18, 1);
-		line-height: 30 / 30 * 100%;
-		letter-spacing: 1.66667px;
-		transition: all 0.3s ease 0s;
-		color: $white;
-		margin-bottom: 10px;
-		@media (any-hover: hover) {
-			&:hover {
-				color: $gold;
-			}
-		}
-	}
+    &__slide {
+        display: none;
+        position: relative;
+        overflow: hidden;
+        filter: drop-shadow(0px rem(2) rem(33) $black);
+        @media (any-hover: hover) {
+            &:hover {
+                .connected__image-ibg {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        &._showed {
+            display: block;
+        }
+    }
 
-	&__date {
-		font-weight: 600;
-		font-size: 12px;
-		line-height: 15 / 12 * 100%;
-		color: $grey;
-	}
+    &__image-ibg {
+        display: block;
+        @include adaptiveValue("min-height", 385, 250);
+        position: relative;
+        img {
+            transition: transform 0.5s ease 0s;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.80619) 100%),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.38803), rgba(0, 0, 0, 0.38803));
+        }
+
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0, true);
+    }
+
+    &__info {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        padding: rem(20) rem(10);
+
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0.8, true);
+    }
+
+    &__subtitle {
+        font-weight: 700;
+        font-size: rem(13);
+        line-height: math.div(17, 13);
+        letter-spacing: em(1.85);
+        color: $gold;
+    }
+
+    &__title {
+        flex: 1 1 auto;
+        font-family: "Eurostile";
+        font-weight: 700;
+        @include adaptiveValue("font-size", 30, 18);
+        line-height: math.div(30, 30);
+        letter-spacing: em(1.67);
+        transition: color 0.3s ease 0s;
+        margin-bottom: rem(10);
+        @media (any-hover: hover) {
+            &:hover {
+                color: $gold;
+            }
+        }
+    }
+
+    &__date {
+        font-weight: 600;
+        font-size: rem(12);
+        line-height: math.div(15, 12);
+        color: $grey;
+    }
 }
 
 //========================================================================================================================================================
 
 .available {
-	&__wrapper {
-		overflow: hidden;
-		position: relative;
-		z-index: 6;
-		background-color: $black;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 172px;
-			top: 0;
-			left: 0;
-			background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.0001) 100%);
-		}
-	}
+    overflow: hidden;
+    position: relative;
+    z-index: 6;
+    background-color: $black;
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: rem(172);
+        top: 0;
+        left: 0;
+        background: linear-gradient(180deg, $black 0%, rgba(0, 0, 0, 0.0001) 100%);
+    }
 
-	&__container {
-		position: relative;
-		z-index: 2;
-	}
+    &__container {
+        position: relative;
+        z-index: 2;
+        @include adaptiveValue("padding-top", 150, 50);
+        @include adaptiveValue("padding-bottom", 55, 20);
+    }
 
-	&__body {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		@include adaptiv-value("padding-top", 150, 50, 1);
-		@include adaptiv-value("padding-bottom", 55, 30, 1);
-		margin: 0px -25px;
-		@media (max-width: $md3+px) {
-			@include adaptiv-value("padding-bottom", 25, 10, 1);
-		}
-		@media (max-width: $md4+px) {
-			margin: 0px -10px;
-		}
-	}
+    &__title {
+        text-align: center;
+        @include adaptiveValue("margin-bottom", 40, 30);
+        font-weight: 600;
+        font-size: rem(20);
+        line-height: math.div(26, 20);
+        letter-spacing: em(2.85);
+        color: $gold;
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0);
+    }
 
-	&__title {
-		flex: 1 1 100%;
-		text-align: center;
-		@include adaptiv-value("margin-bottom", 40, 30, 1);
-		font-weight: 600;
-		font-size: 20px;
-		line-height: 26 / 20 * 100%;
-		letter-spacing: 2.85714px;
-		color: $gold;
-		padding: 0px 25px;
-		@media (max-width: $md4+px) {
-			padding: 0px 10px;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-		&._animate {
-			@extend .anim;
-		}
-	}
+    &__grid {
+        @media (min-width: $mobile) {
+            display: flex;
+            gap: rem(50);
+            justify-content: center;
+        }
+        @media (max-width: $mobile) {
+            display: grid;
+            grid-template-columns: repeat(2, 01fr);
+            gap: rem(50);
+            justify-content: center;
+        }
+    }
 
-	&__column {
-		flex: 0 0 195px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding: 0px 25px;
-		@media (max-width: $md2+px) {
-			flex: 0 0 145px;
-			text-align: center;
-		}
-		@media (max-width: $md3+px) {
-			flex: 0 1 50%;
-			padding-bottom: 40px;
-		}
-		@media (max-width: $md4+px) {
-			padding: 0px 10px;
-			padding-bottom: 40px;
-		}
-		&:nth-child(4),
-		&:nth-child(5) {
-			flex: 0 0 155px;
-			@media (max-width: $md2+px) {
-				flex: 0 0 105px;
-			}
-			@media (max-width: $md3+px) {
-				flex: 0 1 50%;
-			}
-		}
-		&._animate {
-			.available__logo,
-			.available__image {
-				@extend .anim;
-			}
-		}
-	}
+    &__column {
+        flex: 0 0 rem(195);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @media (max-width: $tablet) {
+            flex: 0 0 rem(145);
+            text-align: center;
+        }
+        &:nth-child(4),
+        &:nth-child(5) {
+            flex: 0 0 rem(155);
+            @media (max-width: $tablet) {
+                flex: 0 0 rem(105);
+            }
+        }
+    }
 
-	&__logo {
-		@include adaptiv-value("margin-bottom", 50, 30, 1);
-		@media (max-width: $md3+px) {
-			width: 100%;
-		}
-		img {
-			@media (max-width: $md3+px) {
-				min-width: 80%;
-			}
-			max-width: 100%;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0s;
-	}
+    &__logo {
+        @include adaptiveValue("margin-bottom", 50, 30);
+        img {
+            max-width: 100%;
+        }
+        @media (max-width: $mobile) {
+            width: 100%;
+            img {
+                min-width: 80%;
+            }
+        }
 
-	&__image {
-		img {
-			max-width: 100%;
-		}
-		@extend .no-anim;
-		transition: all 0.8s ease 0.5s;
-	}
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0, true);
+    }
 
-	&__bg {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		&::after {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 2.05%, rgba(0, 0, 0, 0.8237) 31.88%, #000000 90%);
-		}
-	}
+    &__image {
+        img {
+            max-width: 100%;
+        }
+
+        // ANIMATION ==================================================================================================================================================
+        @include inViewBasic(0, 0, 0.8, 0.5, true);
+    }
+
+    &__bg-ibg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 2.05%, rgba(0, 0, 0, 0.8237) 31.88%, $black 90%);
+        }
+    }
 }

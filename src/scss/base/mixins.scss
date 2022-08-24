@@ -23,21 +23,6 @@
     $result: math.div($px, $current) + em;
     @return $result;
 }
-//Адаптивное свойство
-
-//Currency
-@mixin currency($sym) {
-    &::after {
-        content: "#{$sym}";
-    }
-}
-
-// Grids
-@mixin gridCards($type: fit, $min: 280px, $max: 1fr, $gap: 30px) {
-    display: grid;
-    gap: $gap;
-    grid-template-columns: repeat(auto-#{$type}, minmax($min, $max));
-}
 
 // Адаптивное свойство (clamp)
 @mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
@@ -103,15 +88,18 @@
     transform: translate($startPosX, $startPosY);
     transition: transform #{$speed}s ease #{$delay}s, opacity #{$speed}s ease #{$delay}s;
     opacity: 0;
+    visibility: hidden;
     @if ($child == true) {
         ._watcher-view & {
-            opacity: 1 !important;
-            transform: translate(0px, 0px) !important;
+            opacity: 1 !important ;
+            visibility: visible !important;
+            transform: translate(0, 0) !important;
         }
     } @else {
         &._watcher-view {
             opacity: 1 !important;
-            transform: translate(0px, 0px) !important;
+            visibility: visible !important;
+            transform: translate(0, 0) !important;
         }
     }
 }

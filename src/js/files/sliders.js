@@ -1,138 +1,65 @@
-import Swiper, { Navigation } from "swiper";
+import Swiper, { EffectFade, Controller } from "swiper";
 import "../../scss/base/swiper.scss";
-
-// $('.subslider-char__slick').slick({
-// 	zIndex: 10,
-// 	speed: 800,
-// 	slidesToShow: 5,
-// 	arrows: false,
-// 	asNavFor: ".slider-char__slick",
-// 	focusOnSelect: true,
-//  });
-//  $('.slider-char__slick').slick({
-// 	zIndex: 10,
-// 	speed: 800,
-// 	slidesToShow: 1,
-// 	fade: true,
-// 	arrows: false,
-// 	draggable: true,
-// 	asNavFor: ".subslider-char__slick",
-//  });
-//  $('.connected__slick').slick({
-// 	zIndex: 10,
-// 	speed: 800,
-// 	slidesToShow: 4.4,
-// 	arrows: false,
-// 	draggable: true,
-// 	infinite: false,
-// 	responsive: [
-// 	   {
-// 		  breakpoint: 1310,
-// 		  settings: {
-// 			 slidesToShow: 4,
-// 		  }
-// 	   },
-// 	   {
-// 		  breakpoint: 992.98,
-// 		  settings: {
-// 			 slidesToShow: 3,
-// 		  }
-// 	   },
-// 	   {
-// 		  breakpoint: 767.98,
-// 		  settings: {
-// 			 slidesToShow: 2,
-// 		  }
-// 	   },
-// 	   {
-// 		  breakpoint: 479.98,
-// 		  settings: {
-// 			 slidesToShow: 1,
-// 		  }
-// 	   }
-// 	]
-//  });
 
 // Инициализация слайдеров
 function initSliders() {
     // Перечень слайдеров
     // Проверяем, есть ли слайдер на стронице
-    if (document.querySelector(".swiper")) {
+    if (document.querySelector(".bottom-slider") && document.querySelector(".sub-slider__swiper")) {
         // Указываем скласс нужного слайдера
         // Создаем слайдер
-        new Swiper(".swiper", {
-            // Указываем скласс нужного слайдера
-            // Подключаем модули слайдера
-            // для конкретного случая
-            modules: [Navigation],
+
+        let subSlider = new Swiper(".sub-slider__swiper", {
+            modules: [Controller],
             observer: true,
             observeParents: true,
             slidesPerView: 1,
             spaceBetween: 0,
-            autoHeight: true,
+            autoHeight: false,
+            slideToClickedSlide: true,
+            speed: 800,
+        });
+        let bottomSlider = new Swiper(".bottom-slider", {
+            modules: [EffectFade, Controller],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            autoHeight: false,
+            speed: 800,
+            effect: "fade",
+        });
+        bottomSlider.controller.control = subSlider;
+        subSlider.controller.control = bottomSlider;
+    }
+    if (document.querySelector(".connected__slider")) {
+        new Swiper(".connected__slider", {
+            modules: [],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 4.4,
+            spaceBetween: 0,
+            autoHeight: false,
             speed: 800,
 
-            //touchRatio: 0,
-            //simulateTouch: false,
-            //loop: true,
-            //preloadImages: false,
-            //lazy: true,
-
-            /*
-			// Эффекты
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
-            // Пагинация
-            /*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-            // Скроллбар
-            /*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
-            // Кнопки "влево/вправо"
-            navigation: {
-                prevEl: ".swiper-button-prev",
-                nextEl: ".swiper-button-next",
-            },
-
             // Брейкпоинты
-            /*
-			breakpoints: {
-				320: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
-            // События
-            on: {},
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                },
+                479.98: {
+                    slidesPerView: 2,
+                },
+                767.98: {
+                    slidesPerView: 3,
+                },
+                991.98: {
+                    slidesPerView: 4,
+                },
+                1310: {
+                    slidesPerView: 4.4,
+                },
+            },
         });
     }
 }

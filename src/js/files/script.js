@@ -3,26 +3,25 @@ import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
 
-// $(document).ready(function () {
-//     window.onload = function () {
-//         if ($(".home__video")) {
-//             var rellax = new Rellax(".home__video", {
-//                 center: true,
-//             });
-//         }
+window.onload = function () {
+    if (document.querySelector("#filter")) {
+        const filterItems = document.querySelectorAll(".connected__filter-item");
+        const filterColumns = document.querySelectorAll(".connected__slide");
+        filterColumns.forEach((item) => item.classList.add("_showed"));
 
-//         $(".connected__filter-item").click(function (event) {
-//             var i = $(this).data("filter");
-//             if (i == 1) {
-//                 $(".connected__slide").show();
-//             } else {
-//                 $(".connected__slide").hide();
-//                 $(".connected__slide.f_" + i).show();
-//             }
-//             $(".connected__filter-item").removeClass("_active");
-//             $(this).addClass("_active");
-
-//             return false;
-//         });
-//     };
-// });
+        filterItems.forEach((item) =>
+            item.addEventListener("click", function (e) {
+                let i = this.dataset.filter;
+                if (i == 1) {
+                    filterColumns.forEach((item) => item.classList.add("_showed"));
+                } else {
+                    filterColumns.forEach((item) => item.classList.remove("_showed"));
+                    document.querySelectorAll(".connected__slide.f_" + i).forEach((item) => item.classList.add("_showed"));
+                }
+                filterItems.forEach((item) => item.classList.remove("_active"));
+                this.classList.add("_active");
+                return false;
+            })
+        );
+    }
+};
