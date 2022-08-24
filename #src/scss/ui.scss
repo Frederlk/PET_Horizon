@@ -1,0 +1,82 @@
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.text {
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 19 / 15 * 100%;
+}
+
+.no-anim {
+	visibility: hidden;
+	opacity: 0;
+}
+.anim {
+	visibility: visible;
+	opacity: 1;
+}
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+
+//====================================================================================================
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+body.ie {
+	._ibg {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	._ibg img {
+		width: 0;
+		height: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+//====================================================================================================
+._video {
+	position: relative;
+	overflow: hidden;
+	video,
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.videobg {
+	video,
+	iframe,
+	object,
+	embed {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		background-size: cover;
+	}
+}
+
+.slick-track {
+	display: flex;
+}
+.slick-dots li button {
+	font-size: 0 !important;
+}
