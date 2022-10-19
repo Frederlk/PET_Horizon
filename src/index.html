@@ -1,137 +1,364 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Верстка «NEW_PROJECT_NAME»</title>
-    </head>
-    <body>
-        <div class="rootpage">
-            <h1>«NEW_PROJECT_NAME»</h1>
-            <div class="rootpage__info">Project Features</div>
-            <h2>Pages:</h2>
-            <ol class="rootpage__list">
-                <li><a target="_blank" href="home.html">Home Page</a></li>
-            </ol>
-            <div class="rootpage__contacts">
-                <h2>My contacts:</h2>
-                <p>Email: <a href="mailto:pertrinichshadow@gmail.com">pertrinichshadow@gmail.com</a></p>
-                <p>Phone: <a href="tel:375256474526">+375256474526</a></p>
-                <p>Social network: <a href="">Link to social network</a></p>
-            </div>
-        </div>
-    </body>
-    <style>
-        @charset "UTF-8";
-        @import url("https://fonts.googleapis.com/css?family=Montserrat:regular,700&display=swap");
-        *,
-        *::before,
-        *::after {
-            padding: 0px;
-            margin: 0px;
-            border: 0px;
-            box-sizing: border-box;
-        }
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            min-width: 320px;
-            width: 100%;
-            color: #fff;
-            background-color: #5e5373;
-        }
-        body {
-            font-family: Montserrat;
-            font-size: 100%;
-            line-height: 1;
-            font-size: 1rem;
-        }
-        a {
-            text-decoration: underline;
-            color: #ebe691;
-        }
-        a:visited {
-            text-decoration: underline;
-            color: #aaa768;
-        }
-        a:hover {
-            text-decoration: none;
-        }
-        ul li {
-            list-style: none;
-        }
-        img {
-            vertical-align: top;
-        }
-        .wrapper {
-            width: 100%;
-            min-height: 100%;
-            overflow: hidden;
-        }
-        .rootpage {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        @media (max-width: 767px) {
-            .rootpage {
-                padding: 30px 15px;
-            }
-        }
-        h1 {
-            color: #ebe691;
-            font-size: 2.5rem;
-            margin: 0px 0px 1.25rem 0px;
-        }
-        @media (max-width: 767px) {
-            h1 {
-                font-size: 1.85rem;
-                margin: 0px 0px 1.25rem 0px;
-            }
-        }
-        h2 {
-            color: #ebe691;
-            font-size: 1.25rem;
-            margin: 0px 0px 1rem 0px;
-        }
-        @media (max-width: 767px) {
-            h2 {
-                font-size: 1.125rem;
-                margin: 0px 0px 1rem 0px;
-            }
-        }
-        .rootpage__info {
-            line-height: 140%;
-            margin: 0px 0px 1.5rem 0px;
-        }
+<html lang="en">
+    @@include('html/_head.htm',{ "title":"Horizon" })
 
-        .rootpage__list {
-            margin: 0px 0px 2.25rem 1.25rem;
-        }
-        .rootpage__list li:not(:last-child) {
-            margin: 0px 0px 15px 0px;
-        }
-        .rootpage__contacts,
-        .rootpage__tnx {
-            border-radius: 200px;
-            padding: 20px 65px;
-            line-height: 140%;
-        }
-        @media (max-width: 767px) {
-            .rootpage__contacts,
-            .rootpage__tnx {
-                border-radius: 40px;
-                padding: 20px;
-            }
-        }
-        .rootpage__contacts {
-            background: #32b5a4;
-        }
-        .rootpage__contacts a {
-            color: #ebe691;
-        }
-    </style>
+    <body>
+        <div class="wrapper">
+            @@include('html/_header.htm',{})
+            <main class="page">
+                <section class="page__home home">
+                    <div data-fullscreen="" class="home__content">
+                        <div class="home__container">
+                            <div class="home__text">
+                                <img src="@img/home/text.svg" alt="Horizon - Forbidden West" />
+                            </div>
+                            <a href="#" class="home__btn btn">BUY NOW</a>
+                        </div>
+                    </div>
+                    <div class="home__video">
+                        <video autoplay muted loop preload="auto">
+                            <source type="video/webm" src="videos/video.webm" />
+                            <source type="video/mp4" src="videos/video.mp4" />
+                        </video>
+                    </div>
+                    <div class="home__image">
+                        <img src="@img/home/bg2.png" alt="background" />
+                    </div>
+                </section>
+
+                <section class="page__info info">
+                    <div class="info__container info-grid">
+                        <div
+                            class="info-grid__row info-grid__row_1"
+                            data-watch
+                            data-watch-once
+                            data-watch-threshold="0.5"
+                        >
+                            <a href="#" class="info-grid__item info-grid__item_1">
+                                <div class="info-grid__content">
+                                    <h3 class="info-grid__subtitle">ANNOUNCEMENTS</h3>
+                                    <h2 class="info-grid__title">WATCH 14 MINS OF GAMEPLAY</h2>
+                                </div>
+                                <div class="info-grid__image-ibg">
+                                    <img src="@img/bog/1.jpg" alt="ANNOUNCEMENTS" />
+                                </div>
+                            </a>
+                            <a href="#" class="info-grid__item info-grid__item_2">
+                                <div class="info-grid__content">
+                                    <h3 class="info-grid__subtitle">EARLY RELEASE</h3>
+                                    <h2 class="info-grid__title">EXCLUSIVELY ON PS5</h2>
+                                </div>
+                                <div class="info-grid__image-ibg">
+                                    <img src="@img/bog/2.jpg" alt="EARLY RELEASE" />
+                                </div>
+                            </a>
+                            <a href="#" class="info-grid__item info-grid__item_3">
+                                <div class="info-grid__content">
+                                    <h3 class="info-grid__subtitle">EXPLORE OPEN WORLD</h3>
+                                    <h2 class="info-grid__title">IMMERSE INTO A POST-APOCALYPTIC WORLD</h2>
+                                </div>
+                                <div class="info-grid__image-ibg">
+                                    <img src="@img/bog/3.jpg" alt="EXPLORE OPEN WORLD" />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="info-grid__row info-grid__row_2" data-watch data-watch-once>
+                            <a href="#" class="info-grid__item info-grid__item_4">
+                                <div class="info-grid__content">
+                                    <h3 class="info-grid__subtitle">GALLERY</h3>
+                                    <h2 class="info-grid__title">BROWSE HD WALLPAPERS</h2>
+                                </div>
+                                <div class="info-grid__image-ibg">
+                                    <img src="@img/bog/4.jpg" alt="GALLERY" />
+                                </div>
+                            </a>
+                            <a href="#" class="info-grid__item info-grid__item_5">
+                                <div class="info-grid__content">
+                                    <h3 class="info-grid__subtitle">WHERE TO BUY</h3>
+                                    <h2 class="info-grid__title">PRE-ORDER NOW</h2>
+                                </div>
+                                <div class="info-grid__image-ibg">
+                                    <img src="@img/bog/5.jpg" alt="WHERE TO BUY" />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info__bg-ibg">
+                        <img src="@img/bog/bg.jpg" alt="background" />
+                    </div>
+                </section>
+
+                <section class="page__char char">
+                    <div class="char__container">
+                        <div class="char__top">
+                            <div class="char__text" data-watch data-watch-once>
+                                <img src="@img/characters/CHARACTERS.svg" alt="CHARACTERS" />
+                            </div>
+                            <div class="char__subslider sub-slider" data-watch data-watch-once>
+                                <div class="sub-slider__swiper swiper">
+                                    <div class="sub-slider__wrapper swiper-wrapper">
+                                        <div class="sub-slider__slide swiper-slide">
+                                            <div class="sub-slider__image-ibg">
+                                                <img src="@img/characters/1.jpg" alt="Aloy" />
+                                            </div>
+                                            <div class="sub-slider__text">Aloy</div>
+                                        </div>
+                                        <div class="sub-slider__slide swiper-slide">
+                                            <div class="sub-slider__image-ibg">
+                                                <img src="@img/characters/2.jpg" alt="Emma" />
+                                            </div>
+                                            <div class="sub-slider__text">Emma</div>
+                                        </div>
+                                        <div class="sub-slider__slide swiper-slide">
+                                            <div class="sub-slider__image-ibg">
+                                                <img src="@img/characters/3.jpg" alt="Mucha" />
+                                            </div>
+                                            <div class="sub-slider__text">Mucha</div>
+                                        </div>
+                                        <div class="sub-slider__slide swiper-slide">
+                                            <div class="sub-slider__image-ibg">
+                                                <img src="@img/characters/4.jpg" alt="Karnov" />
+                                            </div>
+                                            <div class="sub-slider__text">Karnov</div>
+                                        </div>
+                                        <div class="sub-slider__slide swiper-slide">
+                                            <div class="sub-slider__image-ibg">
+                                                <img src="@img/characters/5.jpg" alt="Jun" />
+                                            </div>
+                                            <div class="sub-slider__text">Jun</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="sub-slider__more btn"
+                                    >Protagonists
+                                    <span>
+                                        <svg
+                                            width="22"
+                                            height="16"
+                                            viewBox="0 0 22 16"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M4 0H0V4H4V0ZM4 6H0V10H4V6ZM6 0H10V4H6V0ZM10 6H6V10H10V6ZM12 0H16V4H12V0ZM16 6H12V10H16V6ZM18 0H22V4H18V0ZM22 6H18V10H22V6ZM0 12H4V16H0V12ZM10 12H6V16H10V12ZM12 12H16V16H12V12ZM22 12H18V16H22V12Z"
+                                                fill="white"
+                                            />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="char__bottom bottom-slider swiper" data-watch data-watch-once>
+                            <div class="bottom-slider__wrapper swiper-wrapper">
+                                <div class="bottom-slider__slide swiper-slide">
+                                    <div class="bottom-slider__image">
+                                        <img src="@img/characters/Aloy.png" alt="ALOY" />
+                                    </div>
+                                    <div class="bottom-slider__info">
+                                        <div class="bottom-slider__name">ALOY</div>
+                                        <div class="bottom-slider__text">Think You Can Stop Me?</div>
+                                        <div class="bottom-slider__weapons">
+                                            <img src="@img/characters/weapon.png" alt="weapon" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-slider__slide swiper-slide">
+                                    <div class="bottom-slider__image">
+                                        <img src="@img/characters/Aloy.png" alt="Emma" />
+                                    </div>
+                                    <div class="bottom-slider__info">
+                                        <div class="bottom-slider__name">Emma</div>
+                                        <div class="bottom-slider__text">
+                                            There's nothing I wouldn't do to save this world
+                                        </div>
+                                        <div class="bottom-slider__weapons">
+                                            <img src="@img/characters/weapon.png" alt="weapon" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-slider__slide swiper-slide">
+                                    <div class="bottom-slider__image">
+                                        <img src="@img/characters/Aloy.png" alt="Mucha" />
+                                    </div>
+                                    <div class="bottom-slider__info">
+                                        <div class="bottom-slider__name">Mucha</div>
+                                        <div class="bottom-slider__text">
+                                            People Die All The Time. Now Keep Going!
+                                        </div>
+                                        <div class="bottom-slider__weapons">
+                                            <img src="@img/characters/weapon.png" alt="weapon" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-slider__slide swiper-slide">
+                                    <div class="bottom-slider__image">
+                                        <img src="@img/characters/Aloy.png" alt="Karnov" />
+                                    </div>
+                                    <div class="bottom-slider__info">
+                                        <div class="bottom-slider__name">Karnov</div>
+                                        <div class="bottom-slider__text">Survival Requires Perfection</div>
+                                        <div class="bottom-slider__weapons">
+                                            <img src="@img/characters/weapon.png" alt="weapon" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-slider__slide swiper-slide">
+                                    <div class="bottom-slider__image">
+                                        <img src="@img/characters/Aloy.png" alt="Jun" />
+                                    </div>
+                                    <div class="bottom-slider__info">
+                                        <div class="bottom-slider__name">Jun</div>
+                                        <div class="bottom-slider__text">Survival Requires Perfection</div>
+                                        <div class="bottom-slider__weapons">
+                                            <img src="@img/characters/weapon.png" alt="weapon" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="page__connected connected">
+                    <div class="connected__container" data-watch data-watch-once>
+                        <div class="connected__social">
+                            <a href="#" class="connected__social-item connected__social-item_fb">
+                                <img src="@img/conected/fb.svg" alt="Facebook" />
+                            </a>
+                            <a href="#" class="connected__social-item connected__social-item_tw">
+                                <img src="@img/conected/tw.svg" alt="Twitter" />
+                            </a>
+                            <a href="#" class="connected__social-item connected__social-item_inst">
+                                <img src="@img/conected/inst.svg" alt="instagram" />
+                            </a>
+                        </div>
+                        <nav class="connected__filter-menu" id="filter">
+                            <ul class="connected__filter-list">
+                                <li data-filter="1" class="connected__filter-item _active">All</li>
+                                <li data-filter="2" class="connected__filter-item">News</li>
+                                <li data-filter="3" class="connected__filter-item">TWitter</li>
+                                <li data-filter="4" class="connected__filter-item">Facebook</li>
+                            </ul>
+                        </nav>
+                        <div class="connected__more">
+                            <a href="#" class="connected__more-news">MORE NEWS</a>
+                            <a href="#" class="connected__btn btn">SUBSCRIBE</a>
+                        </div>
+                        <div class="connected__bg">
+                            <img src="@img/conected/STAYCONNECTED.svg" alt="STAY CONNECTED" />
+                        </div>
+                    </div>
+                    <div class="connected__body">
+                        <div class="connected__bg-image">
+                            <img src="@img/conected/bg.png" alt="background" />
+                        </div>
+                        <div class="connected__slider swiper" data-watch data-watch-once>
+                            <div class="connected__wrapper swiper-wrapper">
+                                <a href="#" class="connected__slide f_2 swiper-slide">
+                                    <div class="connected__image-ibg">
+                                        <img src="@img/conected/01.jpg" alt="WORLD BOSSES ARE AWESOME" />
+                                    </div>
+                                    <div class="connected__info">
+                                        <div class="connected__subtitle">NEWS</div>
+                                        <div class="connected__title">WORLD BOSSES ARE AWESOME</div>
+                                        <div class="connected__date">4 DAYS AGO</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="connected__slide f_3 swiper-slide">
+                                    <div class="connected__image-ibg">
+                                        <img src="@img/conected/02.jpg" alt="MOST LIKED COSPLAY OF ALOY" />
+                                    </div>
+                                    <div class="connected__info">
+                                        <div class="connected__subtitle">TWITTER</div>
+                                        <div class="connected__title">MOST LIKED COSPLAY OF ALOY</div>
+                                        <div class="connected__date">4 DAYS AGO</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="connected__slide f_4 swiper-slide">
+                                    <div class="connected__image-ibg">
+                                        <img
+                                            src="@img/conected/03.jpg"
+                                            alt="FAN VERSION OF ALOY LOOKS NICE"
+                                        />
+                                    </div>
+                                    <div class="connected__info">
+                                        <div class="connected__subtitle">Facebook</div>
+                                        <div class="connected__title">FAN VERSION OF ALOY LOOKS NICE</div>
+                                        <div class="connected__date">4 DAYS AGO</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="connected__slide f_3 swiper-slide">
+                                    <div class="connected__image-ibg">
+                                        <img src="@img/conected/04.jpg" alt="UNDERWATER LOOKS MESMERIZING" />
+                                    </div>
+                                    <div class="connected__info">
+                                        <div class="connected__subtitle">TWITTER</div>
+                                        <div class="connected__title">UNDERWATER LOOKS MESMERIZING</div>
+                                        <div class="connected__date">4 DAYS AGO</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="connected__slide f_2 swiper-slide">
+                                    <div class="connected__image-ibg">
+                                        <img src="@img/conected/05.jpg" alt="MASSIVE OPEN WORLD MAP" />
+                                    </div>
+                                    <div class="connected__info">
+                                        <div class="connected__subtitle">NEWS</div>
+                                        <div class="connected__title">MASSIVE OPEN WORLD MAP</div>
+                                        <div class="connected__date">4 DAYS AGO</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="page__available available">
+                    <div class="available__container">
+                        <h2 class="available__title" data-watch data-watch-once>AVAILABLE FOR PURCHSE</h2>
+                        <div class="available__grid">
+                            <div class="available__column" data-watch data-watch-once>
+                                <div class="available__logo">
+                                    <img src="@img/purchase/01.png" alt="purchase" />
+                                </div>
+                                <div class="available__image">
+                                    <img src="@img/purchase/3.png" alt="purchase" />
+                                </div>
+                            </div>
+                            <div class="available__column" data-watch data-watch-once>
+                                <div class="available__logo">
+                                    <img src="@img/purchase/02.png" alt="purchase" />
+                                </div>
+                                <div class="available__image">
+                                    <img src="@img/purchase/2.png" alt="purchase" />
+                                </div>
+                            </div>
+                            <div class="available__column" data-watch data-watch-once>
+                                <div class="available__logo">
+                                    <img src="@img/purchase/03.png" alt="purchase" />
+                                </div>
+                                <div class="available__image">
+                                    <img src="@img/purchase/1.png" alt="purchase" />
+                                </div>
+                            </div>
+                            <div class="available__column" data-watch data-watch-once>
+                                <div class="available__logo">
+                                    <img src="@img/purchase/04.png" alt="purchase" />
+                                </div>
+                                <div class="available__image">
+                                    <img src="@img/purchase/4.png" alt="purchase" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="available__bg-ibg">
+                        <img src="@img/purchase/bg.png" alt="purchase" />
+                    </div>
+                </section>
+            </main>
+            @@include('html/_footer.htm',{})
+        </div>
+        @@include('html/_js.htm',{})
+    </body>
 </html>
